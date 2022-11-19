@@ -1,0 +1,111 @@
+import matplotlib.pyplot as plt
+
+x = []
+y = []
+nofiles=40
+for _f in range(nofiles):
+  files= open('/content/delay'+str(_f)+'.txt','r')
+  for i in range(10):
+    temp1 = list(map(float, files.readline().split()))
+    x.append(temp1[0])
+print(x)
+print(len(x))
+
+for _f in range(nofiles):
+  files = open('/content/responsetime'+str(_f)+'.txt','r')
+  for i in range(len(x)//nofiles):
+    temp = list(map(int, files.readline().split()))
+    y.append(temp[1]-temp[0])
+print(y)
+print(len(y))
+
+plt.xlabel('Mean value for inter-request delay')
+plt.ylabel('response Time')
+plt.title('Mean value for inter-request delay vs Response Time')
+# plt.plot(x, y,marker='o', c = 'g')
+plt.scatter(x,y, marker='o',color='g')
+plt.show()
+
+-------------------------------------
+x = []
+y = []
+nofiles=40
+for _f in range(nofiles):
+  files= open('/content/delay'+str(_f)+'.txt','r')
+  for i in range(10):
+    temp2 = list(map(float, files.readline().split()))
+    x.append(temp2[0])
+print(x)
+print(len(x))
+
+for _f in range(nofiles):
+  files = open('/content/throughput'+str(_f)+'.txt','r')
+  for i in range(1):
+    temp3 = list(map(int, files.readline().split()))
+    for j in range(10):
+      y.append(temp3[1]-temp3[0])
+print(y)
+print(len(y))
+
+plt.xlabel('Mean value for inter-request delay')
+plt.ylabel('Throughput')
+plt.title('Mean value for inter-request delay vs Throughput')
+# plt.plot(x, y,marker='o', c = 'g')
+plt.scatter(x,y, marker='o',color='r')
+plt.show()
+
+---------------------------------------
+
+x = []
+y = []
+nofiles=40
+for _f in range(nofiles):
+  files= open('/content/config'+str(_f)+'.txt','r')
+  for i in range(10):
+    temp4 = list(map(int, files.readline().split()))
+    x.append(temp4[1]-temp4[0])
+print(x)
+print(len(x))
+for _f in range(nofiles):
+  files = open('/content/responsetime'+str(_f)+'.txt','r')
+  for i in range(10):
+    temp5 = list(map(int, files.readline().split()))
+    y.append(temp5[1]-temp5[0])
+print(y)
+print(len(y))
+
+plt.xlabel('Critical Section Execution time')
+plt.ylabel('Response Time')
+plt.title('Critical Section Execution Time vs Response Time')
+# plt.plot(x, y,marker='o', c = 'g')
+plt.scatter(x,y, marker='o',color='y')
+plt.show()
+
+-------------------------------------------
+
+
+x = []
+y = []
+nofiles=40
+for _f in range(nofiles):
+  files= open('/content/config'+str(_f)+'.txt','r')
+  for i in range(10):
+    temp6 = list(map(int, files.readline().split()))
+    x.append(temp6[1]-temp6[0])
+print(x)
+print(len(x))
+for _f in range(nofiles):
+  files = open('/content/throughput'+str(_f)+'.txt','r')
+  for i in range(1):
+    temp7 = list(map(int, files.readline().split()))
+    for j in range(10):
+      y.append(temp7[1]-temp7[0])
+print(y)
+print(len(y))
+
+plt.xlabel('Critical Section Execution time')
+plt.ylabel('System Throughput')
+plt.title('Critical Section Execution Time vs system throughput')
+# plt.plot(x, y,marker='o', c = 'g')
+plt.scatter(x,y, marker='o',color='b')
+plt.show()
